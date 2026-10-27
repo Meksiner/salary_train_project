@@ -1,9 +1,9 @@
-from pathlib import Path
-
 import mlflow.tensorflow
 import numpy as np
 import pandas as pd
 import tensorflow as tf
+
+from pathlib import Path
 from sklearn.compose import ColumnTransformer
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
