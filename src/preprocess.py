@@ -1,6 +1,6 @@
-import pandas as pd
-
 from pathlib import Path
+
+import pandas as pd
 
 path = "data/salary_prediction_data.csv"
 project_root = str(Path(__file__).parent.parent / path)

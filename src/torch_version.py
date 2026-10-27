@@ -1,14 +1,11 @@
-
-
-import mlflow.pytorch
-import numpy.typing as npt
-import numpy as np
-import pandas as pd
-import torch
-
-
 from pathlib import Path
 from typing import cast
+
+import mlflow.pytorch
+import numpy as np
+import numpy.typing as npt
+import pandas as pd
+import torch
 from sklearn.compose import ColumnTransformer
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
@@ -72,9 +69,7 @@ X_val = preprocessor.fit_transform(X_val).astype(np.float32)
 X_test = preprocessor.fit_transform(X_test).astype(np.float32)
 
 
-def to_tensors(
-    X: npt.NDArray[np.float32],
-    y: npt.NDArray[np.float64]) -> TensorDataset:
+def to_tensors(X: npt.NDArray[np.float32], y: npt.NDArray[np.float64]) -> TensorDataset:
     X_tensor = torch.tensor(X, dtype=torch.float32)
     y_tensor = torch.tensor(
         np.asarray(y).reshape(-1, 1), dtype=torch.float32
@@ -106,7 +101,7 @@ test_loader = DataLoader(
 
 
 class NeuralNetwork(nn.Module):
-    def __init__(self, input_size:int, output_size:int):
+    def __init__(self, input_size: int, output_size: int):
         super().__init__()
 
         self.network = nn.Sequential(
@@ -117,7 +112,7 @@ class NeuralNetwork(nn.Module):
             nn.Linear(64, output_size),
         )
 
-    def forward(self, x:torch.Tensor) -> torch.Tensor:
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
         return cast(torch.Tensor, self.network(x))
 
 
@@ -149,7 +144,7 @@ def train() -> float:
     return total_loss / total
 
 
-def evaluate(loader:DataLoader) -> float:
+def evaluate(loader: DataLoader) -> float:
     model.eval()
     total_loss = 0
     total = 0
