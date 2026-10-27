@@ -86,7 +86,7 @@ model.compile(
 model.summary()
 
 checkpoint = tf.keras.callbacks.ModelCheckpoint(
-    filepath="model.keras",
+    filepath="mlmodels/model.keras",
     monitor="val_loss",
     save_best_only=True,
     mode="min"
@@ -127,7 +127,7 @@ with mlflow.start_run(run_name="run_name"):
             "val_rmse": history.history["val_rmse"][epoch]
         }, step=epoch + 1)
 
-    best_model = tf.keras.models.load_model("model.keras")
+    best_model = tf.keras.models.load_model("mlmodels/model.keras")
 
     # Оценка в стандартизированном масштабе
     y_test_scaled = target_scaler.transform(
@@ -145,5 +145,5 @@ with mlflow.start_run(run_name="run_name"):
                         "test_rmse": scaled_rmse
                         })
 
-    mlflow.log_artifact("model.keras")
+    mlflow.log_artifact("mlmodels/model.keras")
     print(scaled_loss, scaled_mae, scaled_rmse)

@@ -1,0 +1,2 @@
+ uv pip install pre-commit
+ pre-commit install --hook-type pre-push

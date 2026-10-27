@@ -1,0 +1,8 @@
+torch==2.9.1
+torchaudio==2.9.1
+torchvision==0.24.1
+tensorflow==2.21.0
+mlflow==3.17.2
+scikit-learn==1.7.2
+numpy==2.1.2
+pandas==2.3.3
