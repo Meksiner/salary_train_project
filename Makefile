@@ -10,7 +10,7 @@ format:
 	uv run ruff format app src
 
 typecheck:
-	uv run mypy app src
+	uv run mypy src
 
 test:
 	uv run pytest
